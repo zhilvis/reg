@@ -1,0 +1,7 @@
+<cfg>
+  
+  <webapp>src/main/webapp</webapp>
+  <port>8822</port>
+  <context>/pegasus-app</context>
+  
+</cfg>

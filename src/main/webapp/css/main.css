@@ -1,0 +1,36 @@
+
+#main{
+	overflow: hidden;
+	width: 517px;
+	display: block;
+	border: solid;
+}
+
+#holder{
+	width: 10000px;
+}
+
+#frame{
+	width: 512px;
+	float: left;
+}
+
+#new{
+	float: left;
+	display: block;
+	width: 512px;
+}
+
+ul{
+	-webkit-padding-start: 0px;
+	list-style-type: none;
+}
+
+li{
+	margin: 0px 10px 10px 10px;
+	border: solid 1px;
+	cursor: pointer;
+	padding: 5px 5px 5px 10px;
+	font-size: 24px;
+	white-space: nowrap;
+}

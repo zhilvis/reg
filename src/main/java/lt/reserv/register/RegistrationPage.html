@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<script type="text/javascript" 
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+	
+	<script>
+		 $(document).ready(function(){
+			$("#frame li").click(function () {
+				$("#frame").animate({"margin-left": "-517"});
+			});
+			$("#new li").click(function () {
+				$("#frame").animate({"margin-left": "0"});
+			});
+ 		});
+	</script>
+
+</head>
+
+<body>
+
+<div id="main">
+<div id="holder">
+<div id="frame">
+<ul>
+<li> Ttest 1 </li>
+<li> test 2 </li>
+<li> test 3 </li>
+</ul>
+</div>
+
+
+<div id="new">
+<ul>
+<li> test 4 </li>
+<li> test 5 </li>
+<li> test 6 </li>
+</ul>
+</div>
+</div>
+</div>
+
+</body>
+
+
+</html>
