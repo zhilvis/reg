@@ -1,18 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html> 
 <html>
 
 <head>
-
+	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<script type="text/javascript" 
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+	<script type="text/javascript" 
+		src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+	<script type="text/javascript" 
+		src="https://gist.github.com/raw/966738/921d382b6b51c0b84993942a8a0171bd8470ad0c/ui.datepicker-lt.js"></script>
+	
+	
 	
 	<script>
+		var selectedDate = "";
 		 $(document).ready(function(){
-			$("#frame li").click(function () {
-				$("#frame").animate({"margin-left": "-517"});
+			
+			$(".field input").each(function(){
+				var input = $(this);
+				
+				input.prev().click(function(){
+					input.focus();
+				});
+				
+				input.blur(function(){
+				  var input = $(this);
+				  if(!input.val().length){
+				    input.prev().show();
+				  }
+				});
+				
+				input.keypress(function(){
+				  setTimeout(function(){
+				    if(input.val().length){
+				      input.prev().hide();
+				    }else{
+				      input.prev().show();
+				    }
+				  }, 0);
+				});
 			});
-			$("#new li").click(function () {
-				$("#frame").animate({"margin-left": "0"});
+			
+			
+			
+			
+			
+			$( "#datepicker" ).datepicker({
+				onSelect: function(dateText, inst) {
+					selectedDate = dateText;
+					$("#timepicker").show();
+				}
+			});
+			
+			$( "#datepicker" ).datepicker( "option",
+				$.datepicker.regional[ "lt" ] );
+			
+			$("#timepicker div").click(function (){
+				var time = $(this).children("p").html();
+				var li = $("<li> < "+selectedDate+ " - " + time +"</li>");
+				li.appendTo("#choice");
+				li.click(function(){
+					$(li.parent().children("li").get().reverse()).each(function(index, element){
+						$(element).remove();
+						if(element == li[0]){
+						     return false;
+						}
+					});
+					selected = false;
+					dateDiv.show();
+					dateDiv.animate({"margin-left": "0"});
+				});
+				
+				var dateDiv = $("#kalendorius");	
+				var nextDiv = dateDiv.next();
+				nextDiv.css("margin-left", "0");
+				nextDiv.show();
+				
+				dateDiv.animate({"margin-left": "-517"}, function(){
+					$("#timepicker").hide();
+					$("#kalendorius").hide();
+				});
+			});
+			
+			$("#holder div li").click(function () {
+				var div = $(this).parent().parent();
+
+				var li = $("<li> &lt; "+$(this).html()+"</li>")
+				li.appendTo("#choice");
+				li.click(function(){
+					$(li.parent().children("li").get().reverse()).each(function(index, element){
+						$(element).remove();
+						if(element == li[0]){
+						     return false;
+						}
+					});
+					div.show();
+					div.animate({"margin-left": "0"});
+				});
+				
+
+				var nextDiv = div.next();
+				nextDiv.css("margin-left", "0");
+				nextDiv.show();
+				div.animate({"margin-left": "-517"}, function(){
+					div.hide();
+				});
 			});
  		});
 	</script>
@@ -22,23 +116,71 @@
 <body>
 
 <div id="main">
+<ul id="choice">
+</ul>
 <div id="holder">
-<div id="frame">
-<ul>
-<li> Ttest 1 </li>
-<li> test 2 </li>
-<li> test 3 </li>
-</ul>
+	
+
+<div id="paslauga">
+	<ul>
+		<li> Moterų kirpimas </li>
+		<li> Vyrų kirpimas </li>
+		<li> Cheminis šukavimas, trumpi </li>
+		<li> Cheminis šukavimas </li>
+		<li> Sušukavimas </li>
+		<li> Cheminis tiesinimas </li>
+		<li> Dažymas + kirpimas </li>
+		<li> Dažymas </li>
+		<li> Dažymas sruogelėmis</li>
+		<li> Dažymas sruogelėmis + kirpimas</li>
+	</ul>
 </div>
 
 
-<div id="new">
-<ul>
-<li> test 4 </li>
-<li> test 5 </li>
-<li> test 6 </li>
-</ul>
+<div id="specialistas">
+	<ul>
+		<li> Bet kuris </li>
+		<li> Vardenis Pavardenis </li>
+		<li> Auksinis Kardas </li>
+		<li> Auksinė Raidė </li>
+		<li> Petras Petraitis </li>
+	</ul>
 </div>
+
+<div id="kalendorius">
+	<div id="datepicker" style="width: 420"></div>
+	<div id="timepicker" style="display: none">
+		<div> <p>10:00</p> </div>
+		<div> <p>12:00</p> </div>
+		<div> <p>15:00</p> </div>
+		<div> <p>16:00</p> </div>
+		<div> <p>17:00</p> </div>
+		<div> <p>18:00</p> </div>
+		<div> <p>19:00</p> </div>
+		<div> <p>20:00</p> </div>
+	</div>
+</div>
+
+
+
+<div id="duomenys">
+	<div class="field">
+		<span>Vardas pavardė</span>
+		<input type="text"/>
+	</div>
+	
+	<div class="field">
+		<span>El. paštas</span>
+		<input type="text"/>
+	</div>
+	
+	<div class="field">
+		<span>Telefonas</span>
+		<input type="text"/>
+	</div>
+</div>
+
+
 </div>
 </div>
 

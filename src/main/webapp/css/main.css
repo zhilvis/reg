@@ -1,36 +1,117 @@
 
 #main{
 	overflow: hidden;
-	width: 517px;
+	width: 512px;
 	display: block;
-	border: solid;
 }
 
 #holder{
 	width: 10000px;
 }
 
-#frame{
+#holder > div{
 	width: 512px;
-	float: left;
-}
-
-#new{
 	float: left;
 	display: block;
-	width: 512px;
+	margin: 0px 0px 0px 10px;
 }
 
 ul{
 	-webkit-padding-start: 0px;
 	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
 }
 
 li{
-	margin: 0px 10px 10px 10px;
+	margin: 0px 10px 10px 0px;
 	border: solid 1px;
 	cursor: pointer;
-	padding: 5px 5px 5px 10px;
+	padding: 9px 7px 10px 7px;
 	font-size: 24px;
 	white-space: nowrap;
+}
+
+
+.field{
+	position: relative;
+	margin: 0px 26px 10px 0px;
+}
+
+.field > span {
+	position: absolute;
+	z-index: 1;
+	line-height: 50px;
+	left: 9px;
+	color: grey;
+	font-size: 24px;
+}
+
+.field > input {
+	width: 100%;
+	padding: 9px 7px 10px 7px;
+	font-size: 24px;
+}
+
+
+#datepicker{
+	float: left;
+	display: block;
+}
+#timepicker{
+	margin: 60px 10px 10px 10px;
+	float: right;
+	display: block;
+}
+#timepicker div{
+	border: solid 1px;
+	width: 50px;
+	height: 40px;
+	text-align: center;
+	margin: 0px 0px 10px 0px;
+	cursor: pointer;
+	display: table;
+}
+#timepicker p{
+	 display: table-cell;
+	-webkit-margin-before: 0px;
+	-webkit-margin-after: 0px;
+	vertical-align: middle;
+}
+
+.ui-datepicker-next{
+	cursor: pointer;
+}
+
+.ui-datepicker-calendar a{
+	text-decoration: none;
+	color: black;
+}
+
+.ui-datepicker-calendar {
+	border-spacing: 15px;
+}
+
+.ui-datepicker-title {
+	float: left;
+	display: block;
+	margin-right: 10px;
+}
+
+.ui-datepicker-calendar td{
+	border: solid 1px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.ui-datepicker-other-month, .ui-datepicker-prev{
+	display: none;
+}
+
+.ui-datepicker-header{
+	font-size: 24px;
+	margin-left: 20px;
 }
